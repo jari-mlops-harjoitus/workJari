@@ -21,6 +21,7 @@ jobs:
         
     - name: Install dependencies
       run: |
+        source ~/mlops-venv/bin/activate
         python -m pip install --upgrade pip
         pip install pandas
         pip install numpy
@@ -28,5 +29,6 @@ jobs:
         pip install scikit-learn
         
     - name: Connect to local server and run the Python files
-      run: |       
+      run: |      
+        source ~/mlops-venv/bin/activate
         python src/submit_run.py

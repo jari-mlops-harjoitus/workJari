@@ -13,19 +13,15 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
         
     - name: Install dependencies
       run: |
+        source ~/mlops-venv/bin/activate
         python -m pip install --upgrade pip
         pip install jupyter
         python -m pip install kfp==1.8.22
         
-    - name: Connect to local server and run the Notebook
+    - name: Connect to local server and run the Notebook      
       run: |       
-        # Execute the Jupyter Notebook and overwrite the existing file with the results
+        source ~/mlops-venv/bin/activate
         jupyter nbconvert --execute --to notebook --inplace notebooks/demo-pipeline.ipynb
